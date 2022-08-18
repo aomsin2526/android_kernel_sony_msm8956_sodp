@@ -39,6 +39,13 @@
 
 };
 
+&firmware {
+	android {
+		boot_devices = "soc/7824900.sdhci";
+		/delete-node/ fstab;
+	};
+};
+
 &soc {
 	pinctrl@1000000 {
 		disabled-pins = <0 1 2 3>;
