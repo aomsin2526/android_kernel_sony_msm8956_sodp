@@ -3207,7 +3207,12 @@ static int smbchg_calc_max_flash_current(struct smbchg_chip *chip)
 		return 0;
 	}
 
+#if defined(CONFIG_MSM_BCL_PERIPHERAL_CTL_LEGACY)
 	rc = msm_bcl_read(BCL_HIGH_IBAT, &ibat_now);
+#else
+	rc = 1;
+#endif
+
 	if (rc) {
 		pr_smb(PR_STATUS, "BCL ibat read failed: %d\n", rc);
 		return 0;
